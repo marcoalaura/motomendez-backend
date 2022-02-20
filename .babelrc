@@ -1,0 +1,12 @@
+{
+  "presets": ["es2015"],
+  "sourceMaps": true,
+  "retainLines": true,
+  "plugins": [
+    "transform-async-to-generator",
+     ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ]
+}

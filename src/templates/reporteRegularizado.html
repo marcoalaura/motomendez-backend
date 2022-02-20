@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta content="text/html" charset="utf-8" http-equiv="Content-Type">
+  <style type="text/css">
+    body {
+      font-family: "Liberation Sans";
+    }
+
+    #encabezado {
+      text-align: center;
+      color: #1c5737;
+    }
+
+    p,
+    table {
+      font-size: 10px;
+    }
+
+    .contenido {
+      margin-top: 0 auto;
+    }
+
+    .seccion {
+      text-align: center;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    .seccionalt {
+      text-align: center;
+      font-weight: bold;
+      font-size: 10px;
+    }
+
+    .seccion-caeb {
+      background-color: #575757;
+      text-align: center;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+
+    h3 {
+      color: white;
+    }
+
+    .dato {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      padding-left: 15px;
+      padding-right: 12px;
+      margin-left: 20px;
+    }
+
+    .dato-moneda {
+      border-bottom: 1px solid #ddd;
+      text-align: right;
+      padding-left: 15px;
+      padding-right: 12px;
+      margin-left: 20px;
+    }
+
+    .dato-centro {
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      padding-left: 15px;
+      padding-right: 12px;
+      margin-left: 20px;
+    }
+
+    .nombre-dato {
+      background-color: #eceeef;
+      padding-left: 15px;
+      padding-right: 12px;
+    }
+
+    .nombre_razon {
+      border-style: solid;
+    }
+
+    .altura-td {
+      height: 15px;
+    }
+
+    .espacio {
+      padding-left: 5px;
+    }
+
+    .titulo-tabla {
+      background-color: #eceeef;
+      height: 28px;
+    }
+
+    .altura-td-productos {
+      height: 28px;
+    }
+
+    @media all {
+      div.saltopagina {
+        display: none;
+      }
+    }
+
+    @media print {
+      div.saltopagina {
+        display: block;
+        page-break-before: always;
+      }
+      .oculto {
+        display: none
+      }
+    }
+
+    .mapa {
+      padding: 20px 0 20px 0;
+    }
+
+    #customers {
+      border-collapse: collapse;
+      width: 95%;
+    }
+
+    #customers td,
+    #customers th {
+      border: 1px solid #ddd;
+      padding: 4px;
+    }
+
+    #customers tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+      background-color: #ddd;
+    }
+
+    #customers th {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      text-align: left;
+      background-color: #1c5737;
+      color: white;
+    }
+  </style>
+</head>
+
+<body >
+  <div class="contenido">
+    <div id="encabezado">
+        <div class="seccion">INFORME RETROACTIVO DE PERSONAS CON DISCAPACIDAD REGULARIZADAS<br>HABILITADAS PARA EL COBRO DE BONO</div>
+        <br><div class="seccionalt">MUNICIPIO DE  <%= municipio%></div>
+    </div>
+    <% var sw = 0; var cont = 1 %>
+    <% for(var i = 0; i < personas.length; i++) { %>
+      <% if(sw === 0) { %>
+        <div class="gestión">
+          <table id="customers">
+            <tr>
+              <th style="text-align:center;">Gestión <%= personas[i].fid_mes%> / <%= gestion%></th>
+            </tr>
+          </table>
+        </div>
+        <div class="contenido-seccion">
+          <table id="customers">
+            <tr>
+              <th style="text-align:center;" width="12px">N°</th>
+              <th style="text-align:center;" width="90px">Carnet de Identidad</th>
+              <th style="text-align:center;" >Nombre Completo </th>
+              <th style="text-align:center;" width="60px">Celular</th>
+            </tr>
+      <% sw = 1; cont = 1;} else { cont = cont +1;} %>
+            <tr>
+              <td style="text-align:center;"><%= cont %></td>
+              <td style="text-align:center;"><%= personas[i].c_i %></td>
+              <td style="text-align:left;"><%= personas[i].nombre_completo %> </td>
+              <td style="text-align:center;"><%= personas[i].telefono %></td>
+            </tr>
+      <% if(i+1 < personas.length) { %>
+        <% if(personas[i].fid_mes != personas[i+1].fid_mes) { %>
+        <% sw = 0;} %>
+      <% } %>
+    <% } %>
+        <div style='text-align:center'></div>
+      </table>
+    </div>
+
+    <!-- <div class="saltopagina"></div> -->
+    <!-- <div class="posicion-qr">
+    </div> -->
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+[
+    {
+    "orden": 1,
+    "paso": "cargar_tmp_pcd",
+    "descripcion": "SALUD - Cargar información desde el servicio SIPRUN",
+    "estado": "HABILITADO",
+    "validador": "paso1",
+    "tipo": "GET",
+    "api": "siprunpcd"
+    },
+    {
+    "orden": 2,
+    "paso": "cargar_ibc",
+    "descripcion": "IBC - Carga la información de nuevos certificados",
+    "estado": "PENDIENTE",
+    "validador": "paso2",
+    "tipo": "GET",
+    "api": "ibc"
+    },
+    {
+    "orden": 3,
+    "paso": "contrastar_tmp_pcd",
+    "descripcion": "SEGIP - Contrasta información de nuevos PCDs",
+    "estado": "PENDIENTE",
+    "validador": "paso3",
+    "tipo": "POST",
+    "api": "centralizador/contrastar_tmp_pcd"
+    },
+    {
+    "orden": 4,
+    "paso": "registro_pcd",
+    "descripcion": "Realizar el registro de nuevos PCDs y certificados en la plataforma",
+    "estado": "PENDIENTE",
+    "validador": "paso4",
+    "tipo": "POST",
+    "api": "centralizador/registrar_tmp_pcd"
+    },
+    {
+    "orden": 5,
+    "paso": "sigep_registro_sin_cod_benef",
+    "descripcion": "SIGEP - Registro de nuevos beneficiarios",
+    "estado": "PENDIENTE",
+    "validador": "paso5",
+    "tipo": "GET",
+    "api": "centralizador/sigep/beneficiario?gestion=PGESTION"
+    },
+    {
+    "orden": 6,
+    "paso": "sigep_registro_con_cod_benef",
+    "descripcion": "SIGEP - Actualización de datos de beneficiarios",
+    "estado": "PENDIENTE",
+    "validador": "paso6",
+    "tipo": "GET",
+    "api": "centralizador/sigep/observados"
+    },
+    {
+    "orden": 7,
+    "paso": "sigep_datos_adicionales",
+    "descripcion": "SIGEP - Registro de datos adicionales (Domicilio y Municipio)",
+    "estado": "PENDIENTE",
+    "validador": "paso7",
+    "tipo": "GET",
+    "api": "centralizador/sigep/datos_adicionales"
+    },
+    {
+    "orden": 8,
+    "paso": "bono_retroactivo",
+    "descripcion": "Proceso de habilitación de bonos, observados en meses anteriores",
+    "estado": "PENDIENTE",
+    "validador": "paso8",
+    "tipo": "GET",
+    "api": "centralizador/bono_retroactivo?gestion=PGESTION"
+    },
+    {
+    "orden": 9,
+    "paso": "bono_regularizados",
+    "descripcion": "SIGEP - Generación de bonos regularizados",
+    "estado": "PENDIENTE",
+    "validador": "paso9",
+    "tipo": "GET",
+    "api": "centralizador/sigep/bono_regularizados?gestion=PGESTION"
+    },
+    {
+    "orden": 10,
+    "paso": "corte_mensual",
+    "descripcion": "Proceso de habilitación de bonos en el mes correspondiente",
+    "estado": "PENDIENTE",
+    "validador": "paso10",
+    "tipo": "GET",
+    "api": "centralizador/corte_mensual?mes=PMES"
+    },
+    {
+    "orden": 11,
+    "paso": "bono_corte_mensual",
+    "descripcion": "SIGEP - Generación de bonos en el mes correspondiente",
+    "estado": "PENDIENTE",
+    "validador": "paso11",
+    "tipo": "GET",
+    "api": "centralizador/sigep/bono?gestion=PGESTION&mes=PMES"
+    },
+    {
+    "orden": 12,
+    "paso": "reporte_mensual",
+    "descripcion": "Generación del reporte mensual",
+    "estado": "PENDIENTE",
+    "validador": "paso12",
+    "tipo": "GET",
+    "api": "centralizador/reporte_mensual?gestion=PGESTION&mes=PMES"
+    },
+    {
+    "orden": 13,
+    "paso": "reporte_acumulado",
+    "descripcion": "Generación del reporte acumulado",
+    "estado": "PENDIENTE",
+    "validador": "paso13",
+    "tipo": "GET",
+    "api": "centralizador/reporte_acumulado?gestion=PGESTION&mes=PMES"
+    }
+    ]

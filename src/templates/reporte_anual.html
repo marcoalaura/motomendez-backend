@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta content="text/html" charset="utf-8" http-equiv="Content-Type">
+  <style type="text/css">
+    body {
+      font-family: "Liberation Sans";
+    }
+
+    #encabezado {
+      text-align: center;
+      color: #245c95;
+    }
+
+    p,
+    table {
+      font-size: 10px;
+    }
+
+    .contenido {
+      margin-top: 0 auto;
+    }
+
+    .seccion {
+      text-align: center;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    .seccionalt {
+      text-align: center;
+      font-weight: bold;
+      font-size: 10px;
+    }
+
+    .seccion-caeb {
+      background-color: #575757;
+      text-align: center;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+
+    h3 {
+      color: white;
+    }
+
+    .dato {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      padding-left: 15px;
+      padding-right: 12px;
+      margin-left: 20px;
+    }
+
+    .dato-moneda {
+      border-bottom: 1px solid #ddd;
+      text-align: right;
+      padding-left: 15px;
+      padding-right: 12px;
+      margin-left: 20px;
+    }
+
+    .dato-centro {
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      padding-left: 15px;
+      padding-right: 12px;
+      margin-left: 20px;
+    }
+
+    .nombre-dato {
+      background-color: #eceeef;
+      padding-left: 15px;
+      padding-right: 12px;
+    }
+
+    .nombre_razon {
+      border-style: solid;
+    }
+
+    .altura-td {
+      height: 15px;
+    }
+
+    .espacio {
+      padding-left: 5px;
+    }
+
+    .titulo-tabla {
+      background-color: #eceeef;
+      height: 28px;
+    }
+
+    .altura-td-productos {
+      height: 28px;
+    }
+
+    @media all {
+      div.saltopagina {
+        display: none;
+      }
+    }
+
+    @media print {
+      div.saltopagina {
+        display: block;
+        page-break-before: always;
+      }
+      .oculto {
+        display: none
+      }
+    }
+
+    .mapa {
+      padding: 20px 0 20px 0;
+    }
+
+    #customers {
+      border-collapse: collapse;
+      width: 95%;
+    }
+
+    #customers td,
+    #customers th {
+      border: 1px solid #ddd;
+      padding: 4px;
+    }
+
+    #customers tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+      background-color: #ddd;
+    }
+
+    #customers th {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      text-align: left;
+      background-color: #245c95;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contenido">
+    <div id="encabezado">
+      <div class="seccion">CORTE ANUAL DE PERSONAS CON DISCAPACIDAD</div>
+    </div><br>
+    <% for (var j=0; j < municipios.length; j++) { %>
+      <div id="encabezado">
+          <div class="seccionalt">MUNICIPIO DE <%= municipios[j].municipio.toUpperCase() %></div>
+      </div>
+      <div class="contenido-seccion">
+        <table width=660 style="margin:2%; text-align:center;" id="customers">
+          <tr>
+            <th style="text-align:center;" width="12px">N°</th>
+            <th style="text-align:center;" width="60px">Carnet de Identidad</th>
+            <th style="text-align:center;" >Nombre Completo </th>
+            <th style="text-align:center;" width="90px">Celular</th>
+          </tr>
+          <% for(var i=0; i < municipios[j].personas.length; i++) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td style="text-align:center;">
+                <%= municipios[j].personas[i].c_i %>
+              </td>
+              <td style="text-align:left;">
+                <%= municipios[j].personas[i].nombre_completo %>
+              </td>
+              <td style="text-align:center;">
+                <%= municipios[j].personas[i].telefono %>
+              </td>
+            </tr>
+            <% } %>
+              <div style='text-align:center'></div>
+        </table>
+
+
+        <% if (j != municipios.length-1) {%>
+          <div style="page-break-after:always;"></div>
+          <% } %>
+       
+      </div>
+      <% } %>
+        <div class="saltopagina"></div>
+        <div class="posicion-qr">
+        </div>
+  </div>
+
+
+</body>
+
+</html>

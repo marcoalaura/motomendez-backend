@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PCD</title>
+  <link rel="stylesheet" href="//www.gob.bo/cdn/element-ui/2.10.0/element-ui.min.css">
+  <link rel="stylesheet" href="//www.gob.bo/cdn/ciudadania/1.0.0/ciudadania.css">
+  <!-- <link rel="stylesheet" href="/cdn/element-ui/2.10.0/element-ui.min.css">
+  <link rel="stylesheet" href="/cdn/ciudadania/1.0.0/ciudadania.css"> -->
+
+  <link rel="stylesheet" href="//motomendez.gob.bo/ws/css/main.css">
+  <script>
+  <% if (locals.error) { %>
+    var error = '<%= error %>';
+  <% } %>
+  <% if (!locals.error) { %>
+    var datos = JSON.parse('<%- datos %>');
+    var token = '<%= token %>';
+    var gestion = '<%= gestion %>';
+  <% } %>
+  </script>
+</head>
+<body>
+  <div id="app">
+    <section class="container">
+      <div
+        v-if="error && error.length"
+        class="ciudadania">
+        <el-alert
+          class="message-error"
+          :title="error"
+          type="error">
+        </el-alert>
+      </div>
+      <div
+        v-else
+        class="ciudadania">
+        <div class="ciudadania-header">
+          <h1 class="ciudadania-title" v-html="titulo"></h1>
+          <!-- <p class="ciudadania-descripcion" v-html="descripcion"></p> -->
+        </div>
+        <template v-if="datos">
+          <!-- <el-card class="box-card" shadow="hover">
+            <div slot="header">
+              <h3>Carnet de discapacidad - SIPRUNPCD</h3>
+            </div>
+            <ul class="box-card-list"  v-if="datos.certificado">
+              <li>
+                <label class="box-card-label">Grado de discapacidad</label> {{ datos.certificado.grados_disc }}
+              </li>
+              <li>
+                <label class="box-card-label">Porcentaje de discapacidad</label> {{ datos.certificado.porcentaje }}
+              </li>
+              <li>
+                <label class="box-card-label">Fecha de vigencia</label> {{ datos.certificado.fecha_vig }}
+              </li>
+            </ul>
+            <el-alert v-if="!datos.certificado"
+              title="No existe el registro de persona con discapacidad en el sistema SIPRUNPCD."
+              type="error">
+            </el-alert>
+          </el-card> -->
+          <el-card class="box-card" shadow="hover">
+            <div slot="header">
+              <h3>Bono mensual para personas con discapacidad</h3>
+            </div>
+            <ul class="box-card-list" v-if="datos.bonos">
+              <li>
+                <label class="box-card-label">Departamento</label> {{ datos.bonos.departamento }}
+              </li>
+              <li>
+                <label class="box-card-label">Provincia</label> {{ datos.bonos.provincia }}
+              </li>
+              <li>
+                <label class="box-card-label">Municipio</label> {{ datos.bonos.municipio }}
+              </li>
+            </ul>
+            <div class="box-card-header" v-if="datos.bonos.datos_mes">
+              <h3>Meses habilitados</h3>
+            </div>
+            <div  v-if="datos.bonos.datos_mes"
+              class="box-card-body pt-0">
+              <el-table :data="datos.bonos.datos_mes" style="width: 100%">
+                <el-table-column label="Período">
+                  <template scope="scope">
+                    <label class="mobile-label">Periodo</label>
+                    <span>{{ scope.row.mes}} - {{ scope.row.fid_gestion}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="observado" label="Estado">
+                  <template scope="scope">
+                    <label class="mobile-label">Estado</label>
+                    <span>
+                      <el-tag type="success" v-if="!scope.row.observado">HABILITADO</el-tag>
+                      <el-tag type="warning" v-if="scope.row.observado">OBSERVADO</el-tag>
+                    </span>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="observacion" label="Observacion">
+                  <template scope="scope">
+                    <label class="mobile-label">Observación</label>
+                    <span>{{scope.row.observacion}}</span>
+                  </template>
+                </el-table-column>
+              </el-table>
+            </div>
+            <el-alert v-if="!datos.bonos"
+              title="La persona no esta habilitada como beneficiario del bono Eustaquio Moto Méndez."
+              type="error">
+            </el-alert>
+          </el-card>
+        </template>
+      </div>
+    </section>
+  </div>
+  <script src="//www.gob.bo/cdn/vue/2.6.10/vue.min.js"></script>
+  <script src="//www.gob.bo/cdn/element-ui/2.10.0/element-ui.min.js"></script>
+  <script src="//www.gob.bo/cdn/ciudadania/1.0.0/ciudadania.js"></script>
+  <!-- <script src="/cdn/vue/2.6.10/vue.min.js"></script>
+  <script src="/cdn/element-ui/2.10.0/element-ui.min.js"></script>
+  <script src="/cdn/ciudadania/1.0.0/ciudadania.js"></script> -->
+
+  <script src="//motomendez.gob.bo/ws/js/app.js"></script>
+</body>
+</html>

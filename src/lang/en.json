@@ -1,0 +1,78 @@
+{
+  "fields": {
+    "usuario" : {
+      "documento_identidad": "DNI",
+      "fecha_nacimiento": "Birthday",
+      "nombres": "First name",
+      "primer_apellido": "Last name",
+      "segundo_apellido": "Last name",
+      "email": "Email",
+      "usuario": "Username",
+      "contrasena": "Password",
+      "observaciones": "Observations",
+      "codigo_contrasena": "Password code",
+      "fecha_expiracion": "Expiration date",
+      "token": "Token",
+      "estado": "State"
+    }
+  },
+
+  "errors": {
+    "crud": {
+      "rowNotFound": "Row not found"
+    },
+    "validation": {
+      "message": "Check that all fields are correct.",
+      "required": "The field is required.",
+      "validationIsEmailFailed": "Validation is email failed.",
+      "nit": "El campo no es un NIT válido.",
+      "date": "El campo no es una fecha válida.",
+      "date_less_than": "El campo debe contener una fecha menor a la fecha actual.",
+      "date_greater_than": "El campo debe contener una fecha mayor a la fecha actual.",
+      "data_date_less_than": "El campo debe contener una fecha no menor a {0} días.",        
+      "data_date_greater_than": "El campo debe contener una fecha no mayor a {0} días.",
+      "data_minlength": "El campo debe contener un mínimo de {0} carácteres.",
+      "data_min": "El campo debe contener un valor mayor igual a {0}.",
+      "data_max": "El campo debe contener un valor menor igual a {0}.",
+      "data_exactlength": "El campo debe tener exactamente {0} carácteres.",
+      "data_matches": "El campo no concuerda con el campo {0}.",
+      "alpha": "El campo sólo puede contener carácteres alfabéticos.",
+      "alpha_numeric": "El campo sólo puede contener carácteres alfanuméricos.",
+      "alpha_dash": "El campo sólo puede contener carácteres alfanuméricos, guiones bajos \"_\" o guiones \"-\".",
+      "validationIsNumericFailed": "Validation is numeric failed.",
+      "integer": "El campo debe contener un número entero.",
+      "matches": "El campo no concuerda con el campo {0}.",
+      "is_natural": "El campo debe contener sólo números positivos.",     
+      "no_zero": "El campo debe contener un número mayor a cero.",
+      "decimal": "El campo debe contener un número decimal."
+    },
+    "config": {
+      
+    },
+    "errors": {
+      "noMessageSupplied": "no message supplied",
+      "error": "\nERROR:",
+      "warning": "\nAdvertencia:",
+      "anErrorOccurred": "An ocurrido un error inesperado",
+      "unknownErrorOccurred": "Ah ocurrido un error desconocido",
+      "unknownError": "Error desconocido",
+      "unknownApiError": "Error desconocido en el API",
+      "databaseIsReadOnly": "Su base de datos está en modo de solo lectura.",
+      "checkDatabase": "Check your database file and make sure that file owner and permissions are correct.",
+      "notEnoughPermission": "You do not have permission to perform this action",
+      "errorWhilstRenderingError": "Error whilst rendering error page",
+      "errorTemplateHasError": "Error template has an error",
+      "oopsErrorTemplateHasError": "Oops, seems there is an error in the error template.",
+      "encounteredError": "Encountered the error: ",
+      "whilstTryingToRender": "whilst trying to render an error page for the error: ",
+      "renderingErrorPage": "Rendering Error Page",
+      "caughtProcessingError": "App caught a processing error in the middleware layer.",
+      "pageNotFound": "No existe el recurso"
+    },
+    "general": {
+      "maintenance": "La aplicación está actualmente en mantenimiento, espere un momento y vuelva a intentarlo.",
+      "moreInfo": "\nMore info: {info}",
+      "requiredOnFuture": "This will be required in future. Please see {link}"
+    }
+  }
+}

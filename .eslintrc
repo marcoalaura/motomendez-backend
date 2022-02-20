@@ -1,0 +1,24 @@
+{
+  "root": true,
+  "extends": "airbnb",
+  "globals": {
+      "myModule": true,
+      "describe": true,
+      "before": true,
+      "it": true,
+      "after": true,
+      "expect": true,
+      "app": true
+  },
+  "env": {
+      "es6": true,
+      "node": true
+  },
+  "rules": {
+    "arrow-body-style": [0, "as-needed"],
+    "max-len": ["error", 175],
+    "no-use-before-define": ["error", { "functions": false, "classes": true }],
+    "no-prototype-builtins": 0,
+    "no-underscore-dangle": 0
+  }
+}

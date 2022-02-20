@@ -1,0 +1,47 @@
+[
+    {
+    "orden": 1,
+    "paso": "corte_anual",
+    "descripcion": "Realizar el proceso de habilitación de los PCDs en la nueva gestión",
+    "estado": "HABILITADO",
+    "validador": "paso1",
+    "tipo": "GET",
+    "api": "centralizador/corte?gestion=PGESTION"
+    },
+    {
+    "orden": 2,
+    "paso": "registro_pcd",
+    "descripcion": "Realizar el registro especial de PCDs y sus certificados",
+    "estado": "PENDIENTE",
+    "validador": "paso2",
+    "tipo": "POST",
+    "api": "centralizador/registrar_tmp_pcd"
+    },
+    {
+    "orden": 3,
+    "paso": "sigep_datos_adicionales",
+    "descripcion": "SIGEP - Registro de datos adicionales (Cambio de Municipio)",
+    "estado": "PENDIENTE",
+    "validador": "paso3",
+    "tipo": "GET",
+    "api": "centralizador/sigep/datos_adicionales"
+    },
+    {
+    "orden": 4,
+    "paso": "cargar_temporal_corte_anual",
+    "descripcion": "JULIO - Realizar corte anual para siguiente gestión",
+    "estado": "PENDIENTE",
+    "validador": "paso4",
+    "tipo": "POST",
+    "api": "centralizador/cargar_tmp_corte_anual"
+    },  
+    {
+    "orden": 5,
+    "paso": "filtrar_temporal_corte_anual",
+    "descripcion": "JULIO - Filtrar corte anual para la siguiente gestión",
+    "estado": "PENDIENTE",
+    "validador": "paso5",
+    "tipo": "POST",
+    "api": "centralizador/filtrar_corte"
+    }
+    ]

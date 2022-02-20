@@ -1,0 +1,44 @@
+:root {
+  --primary: #024f9b;
+  --success: #449935;
+  --warning: #f9c100;
+  --danger: #d31419;
+  --info: #bbbbbb;
+}
+
+.box-card-body .el-alert .el-alert__description {
+  color: var(--primary);
+  font-size: 14px;
+}
+
+.dark-text {
+  color: #48739e;
+  font-weight: 500;
+}
+.small-text {
+  font-size: 14px;
+}
+
+.box-card-header {
+    background-color: #f4f4f5;
+    color: #555;
+    padding: 12px 18px;
+}
+
+.box-card-header h4 {
+  margin: 0;
+  line-height: 1.4rem;
+}
+
+.box-card .el-table {
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .laboral .el-table .cell {
+    font-size: 11px;
+    white-space: wrap;
+    word-break: normal;
+    text-align: center;
+  }
+}

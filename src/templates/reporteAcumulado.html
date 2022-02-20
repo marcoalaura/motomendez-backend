@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta content="text/html" charset="utf-8" http-equiv="Content-Type">
+  <style type="text/css">
+    body {
+      font-family: "Liberation Sans";
+    }
+
+    #encabezado {
+      text-align: center;
+      color: #245c95;
+    }
+
+    p,
+    table {
+      font-size: 8px;
+    }
+
+    .contenido {
+      margin-top: 0 auto;
+    }
+
+    .seccion {
+      text-align: center;
+      font-weight: bold;
+      font-size: 10px;
+    }
+    .seccionalt {
+      text-align: center;
+      font-weight: bold;
+      font-size: 10px;
+    }
+
+    #customers {
+      border-collapse: collapse;
+      width: 95%;
+    }
+
+    #customers td,
+    #customers th {
+      border: 1px solid #ddd;
+      padding: 3px;
+    }
+
+    #customers tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+      background-color: #ddd;
+    }
+
+    #customers th {
+      padding-top: 2px;
+      padding-bottom: 2px;
+      text-align: left;
+      background-color: #245c95;
+      color: white;
+    }
+
+  #leyenda {
+    border-collapse: collapse;
+    font-size: 6px;
+  }
+
+  #leyenda th,
+  #leyenda td {
+    border: 1px solid #ddd;
+    font-size: 6px;
+    padding: 1px;
+  }
+
+  </style>
+</head>
+
+<body >
+  <div class="contenido">
+    <div id="encabezado">
+        <div class="seccion">INFORME GENERAL DE PERSONAS CON DISCAPACIDAD<br>HABILITADAS PARA EL COBRO DE BONO</div>
+        <br><div class="seccionalt">MUNICIPIO DE  <%= municipio%></div>
+    </div>
+    <div>
+      <table id="leyenda">
+        <tr>
+          <td style="text-align:center; color:#888888;">&#10003;</td>
+          <td>HABILITADO</td>
+        </tr>
+        <tr>
+          <td style="text-align:center; color:#888888;">&#10003;
+            <small><small><sup>R</sup></small></small>
+          </td>
+          <td>HABILITADO (REGULARIZADO)</td>
+        </tr>
+        <tr>
+          <td style="text-align:center; color:#888888;">&times;</td>
+          <td>NO HABILITADO</td>
+        </tr>
+      </table>
+    </div>
+    <div class="contenido-seccion">
+      <table id="customers">
+        <tr>
+          <th style="text-align:center;" rowspan="2" width="11px">N°</th>
+          <th style="text-align:center;" rowspan="2" width="80px">Carnet de Identidad</th>
+          <th style="text-align:center;" rowspan="2">Nombre Completo </th>
+          <th colspan="<%= mes %>" style="text-align:center;">Mes</th>
+        </tr>
+        <tr>
+          <% for(var j = 1; j <= mes; j++) { %>
+            <th style="text-align:center;"><%= j %></td>
+          <% } %>
+        </tr>
+        <% for(var i = 0; i < personas.length; i++) { %>
+          <tr>
+            <td style="text-align:center;" ><%= i + 1 %></td>
+            <td style="text-align:center;" ><%= personas[i].c_i %></td>
+            <td style="text-align:left;" ><%= personas[i].nombre_completo %></td>
+              <% for(var j = 1; j <= mes; j++) { %>
+                <% if (personas[i].meses[`mes_${j}`]) { 
+                  if (personas[i].meses[`mes_${j}`].habilitado) { %>
+                  <td style="text-align:center; font-size: 7px">&#10003;
+                    <% if (personas[i].meses[`mes_${j}`].retroactivo) {%>
+                      <span><small><small><sup>R</sup></small></small></span>
+                    <% } %>
+                  </td>
+                <% } else { %>
+                  <td style="text-align:center; color:#888888;">&times;</td>
+                <% }
+                } else { %>
+                  <td style="text-align:center; color:#888888;">&times;</td>
+                  <!-- <td stye="text-align:center"> <small>᙭</small> </td> -->
+                  <% } %>
+            <% } %>
+          </tr>
+        <% } %>
+        <div style='text-align:center'></div>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
